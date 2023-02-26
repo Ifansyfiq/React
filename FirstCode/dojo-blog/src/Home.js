@@ -12,7 +12,10 @@ const Home = () => {
         { title: 'Web dev top tips', body: 'lorem ipsum...', author: 'mario', id: 3 }
       ])
 
-
+    const handleDelete = (id) => {
+        const newBlogs = blogs.filter((blog) => blog.id !== id);
+        setBlogs(newBlogs);
+    } 
     const handleClick = () => {
         setName('saki');
         setAge(39);
@@ -27,7 +30,7 @@ const Home = () => {
             <button onClick={handleClick}>Click Me</button>
             <button onClick={() => handleClick2('hayai')}>Click Meeeeeeeee</button>
 
-            <BlogList blooging={blogs} title="All Blogs"/>
+            <BlogList blooging={blogs} title="All Blogs" handleDelete={handleDelete} />
             <BlogList blooging={blogs.filter( (blog) => blog.author == 'mario') } title="Mario Blogs"/>
         </nav>
     );
