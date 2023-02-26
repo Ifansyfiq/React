@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState , useEffect} from "react";
 import BlogList from "./BlogList";
 
 const Home = () => {
@@ -23,6 +23,11 @@ const Home = () => {
     const handleClick2 = (name) => {
         console.log('hello ' +name);
     }
+
+    useEffect(() => {
+        
+    })
+
     return (  
         <nav className="home">
             <h1>HomePage</h1>
