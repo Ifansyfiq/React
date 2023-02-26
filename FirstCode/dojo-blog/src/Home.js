@@ -26,8 +26,9 @@ const Home = () => {
             <p>{name} is {age} years old</p>
             <button onClick={handleClick}>Click Me</button>
             <button onClick={() => handleClick2('hayai')}>Click Meeeeeeeee</button>
-                
+
             <BlogList blooging={blogs} title="All Blogs"/>
+            <BlogList blooging={blogs.filter( (blog) => blog.author == 'mario') } title="Mario Blogs"/>
         </nav>
     );
 }
