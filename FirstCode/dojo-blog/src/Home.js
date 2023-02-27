@@ -25,7 +25,7 @@ const Home = () => {
 
     //useEffect
     useEffect(() => { 
-        setTimeout (() => { //test time out utk 1000 sec (don't use this for real project)
+        setTimeout (() => { //test time out utk 1 sec (don't use this for real project)
             fetch('http://localhost:8000/blogs')
             .then(res => {
                 return res.json()
