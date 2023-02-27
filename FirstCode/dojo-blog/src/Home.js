@@ -7,7 +7,8 @@ const Home = () => {
     const [name, setName] = useState('hayai');
     const [age, setAge] = useState(23);
     const [blogs, setBlogs] = useState(null);
-    const [isPending, setIsPending] = useState(true);
+    const [isPending, setIsPending] = useState(true); //loading
+    const [error , setError] = useState(null);  //error fetching
 
     const [nama, setNama] = useState('jamal');  //useEffect 
 
@@ -28,11 +29,20 @@ const Home = () => {
         setTimeout (() => { //test time out utk 1 sec (don't use this for real project)
             fetch('http://localhost:8000/blogs')
             .then(res => {
+                console.log(res)
+                if (!res.ok){ //test if have error on fetching or not (block response is false)
+                    throw Error('Could not fetch from resource')  
+                }
                 return res.json()
             })
             .then(data => {
                 setBlogs(data)
                 setIsPending(false)
+                setError(null)
+            })
+            .catch((err) => {
+                setIsPending(false)
+                setError(err.message)
             })
         },1000)
     }, [])
@@ -59,6 +69,7 @@ const Home = () => {
             <button onClick={() => setNama('kamarul')}>Tukar</button>
             <p>{nama}</p>
             
+            {error && <div>{error}</div>}
             {isPending && <div>Please Wait........</div>}
             {blogs && <BlogList blooging={blogs} title="All Blogs"   />} 
             {/* {handleDelete={handleDelete}} */}
