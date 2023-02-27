@@ -6,11 +6,7 @@ const Home = () => {
     //const name = 'hayai';
     const [name, setName] = useState('hayai');
     const [age, setAge] = useState(23);
-    const [blogs, setBlogs] = useState([
-        { title: 'My new website', body: 'lorem ipsum...', author: 'mario', id: 1 },
-        { title: 'Welcome party!', body: 'lorem ipsum...', author: 'yoshi', id: 2 },
-        { title: 'Web dev top tips', body: 'lorem ipsum...', author: 'mario', id: 3 }
-      ])
+    const [blogs, setBlogs] = useState(null);
 
     const [nama, setNama] = useState('jamal');  //useEffect 
 
@@ -27,8 +23,25 @@ const Home = () => {
     }
 
     useEffect(() => { //useEffect
-        console.log({nama})
-    }, [nama])
+        fetch('http://localhost:8000/blogs')
+        .then(res => {
+            return res.json()
+        })
+        .then(data => {
+            setBlogs(data)
+        })
+    }, [])
+
+//     Async version:
+// useEffect(() => {
+//     async function fetchBlogs() {
+//       let response = await fetch('http://localhost:8000/blogs');
+//       response = await response.json();
+//       setBlogs(response);
+//     }
+
+//     fetchBlogs();
+//   }, []);
 
     return (  
         <nav className="home">
@@ -40,8 +53,8 @@ const Home = () => {
             <button onClick={() => setNama('kamarul')}>Tukar</button>
             <p>{nama}</p>
 
-            <BlogList blooging={blogs} title="All Blogs" handleDelete={handleDelete} />
-            <BlogList blooging={blogs.filter( (blog) => blog.author == 'mario') } title="Mario Blogs"/>
+            {blogs && <BlogList blooging={blogs} title="All Blogs" handleDelete={handleDelete} />}
+           {blogs && <BlogList blooging={blogs.filter( (blog) => blog.author == 'mario') } title="Mario Blogs"/>}
         </nav>
     );
 }
