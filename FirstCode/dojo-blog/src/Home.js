@@ -1,14 +1,17 @@
 import { useState , useEffect} from "react";
 import BlogList from "./BlogList";
+import useFetch from "./useFetch";
 
 const Home = () => {
     
     //const name = 'hayai';
     const [name, setName] = useState('hayai');
     const [age, setAge] = useState(23);
-    const [blogs, setBlogs] = useState(null);
-    const [isPending, setIsPending] = useState(true); //loading
-    const [error , setError] = useState(null);  //error fetching
+    // const [blogs, setBlogs] = useState(null);
+    // const [isPending, setIsPending] = useState(true); //loading
+    // const [error , setError] = useState(null);  //error fetching
+
+    const {data: blogs, isPending, error} = useFetch('http://localhost:8000/blogs'); //for custom hook useFetch()
 
     const [nama, setNama] = useState('jamal');  //useEffect 
 
@@ -25,27 +28,27 @@ const Home = () => {
     }
 
     //useEffect
-    useEffect(() => { 
-        setTimeout (() => { //test time out utk 1 sec (don't use this for real project)
-            fetch('http://localhost:8000/blogs')
-            .then(res => {
-                console.log(res)
-                if (!res.ok){ //test if have error on fetching or not (block response is false)
-                    throw Error('Could not fetch from resource')  
-                }
-                return res.json()
-            })
-            .then(data => {
-                setBlogs(data)
-                setIsPending(false)
-                setError(null)
-            })
-            .catch((err) => {
-                setIsPending(false)
-                setError(err.message)
-            })
-        },1000)
-    }, [])
+    // useEffect(() => { 
+    //     setTimeout (() => { //test time out utk 1 sec (don't use this for real project)
+    //         fetch('http://localhost:8000/blogs')
+    //         .then(res => {
+    //             console.log(res)
+    //             if (!res.ok){ //test if have error on fetching or not (block response is false)
+    //                 throw Error('Could not fetch from resource')  
+    //             }
+    //             return res.json()
+    //         })
+    //         .then(data => {
+    //             setBlogs(data)
+    //             setIsPending(false)
+    //             setError(null)
+    //         })
+    //         .catch((err) => {
+    //             setIsPending(false)
+    //             setError(err.message)
+    //         })
+    //     },1000)
+    // }, [])
 
 //     Async version:
 // useEffect(() => {
