@@ -3,7 +3,7 @@ import Home from './Home';
 
 
 function App() {
-  const desc = "Component Learning"
+  const desc = "Learning"
   return (
     <div className="App">
       <p>This is the {desc} session</p>
