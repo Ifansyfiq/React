@@ -15,7 +15,7 @@ const Home = () => {
     const [nama, setNama] = useState('jamal');  //useEffect 
 
     const handleDelete = (id) => {
-        const newBlogs = blogs.filter((blog) => blog.id !== id);
+        const newBlogs = blogs.filter((blog) => blog.id !== id); /* eslint eqeqeq: 0 */
         setBlogs(newBlogs);
     } 
     const handleClick = () => {
