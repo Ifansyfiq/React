@@ -10,10 +10,10 @@ const Home = () => {
 
     const [nama, setNama] = useState('jamal');  //useEffect 
 
-    const handleDelete = (id) => {
-        const newBlogs = blogs.filter((blog) => blog.id !== id); /* eslint eqeqeq: 0 */
-        setBlogs(newBlogs);
-    } 
+    // const handleDelete = (id) => {
+    //     const newBlogs = blogs.filter((blog) => blog.id !== id); /* eslint eqeqeq: 0 */
+    //     setBlogs(newBlogs);
+    // } 
     const handleClick = () => {
         setName('saki');
         setAge(39);
@@ -22,7 +22,8 @@ const Home = () => {
         console.log('hello ' +name);
     }
 
-    useEffect(() => { //useEffect
+    //useEffect
+    useEffect(() => { 
         fetch('http://localhost:8000/blogs')
         .then(res => {
             return res.json()
@@ -53,7 +54,8 @@ const Home = () => {
             <button onClick={() => setNama('kamarul')}>Tukar</button>
             <p>{nama}</p>
 
-            {blogs && <BlogList blooging={blogs} title="All Blogs" handleDelete={handleDelete} />}
+            {blogs && <BlogList blooging={blogs} title="All Blogs"   />} 
+            {/* {handleDelete={handleDelete}} */}
            {blogs && <BlogList blooging={blogs.filter( (blog) => blog.author == 'mario') } title="Mario Blogs"/>}
         </nav>
     );
