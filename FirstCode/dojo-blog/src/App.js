@@ -1,6 +1,6 @@
 import Navbar from './Navbar';
 import Home from './Home';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; //declare router
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; //declare router (Switch (V5) change with Routes (v6))
 
 function App() {
   const desc = "Learning"
