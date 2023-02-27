@@ -12,6 +12,8 @@ const Home = () => {
         { title: 'Web dev top tips', body: 'lorem ipsum...', author: 'mario', id: 3 }
       ])
 
+    const [nama, setNama] = useState('jamal');  //useEffect 
+
     const handleDelete = (id) => {
         const newBlogs = blogs.filter((blog) => blog.id !== id);
         setBlogs(newBlogs);
@@ -24,9 +26,9 @@ const Home = () => {
         console.log('hello ' +name);
     }
 
-    useEffect(() => {
-        
-    })
+    useEffect(() => { //useEffect
+        console.log({nama})
+    }, [nama])
 
     return (  
         <nav className="home">
@@ -34,6 +36,9 @@ const Home = () => {
             <p>{name} is {age} years old</p>
             <button onClick={handleClick}>Click Me</button>
             <button onClick={() => handleClick2('hayai')}>Click Meeeeeeeee</button>
+
+            <button onClick={() => setNama('kamarul')}>Tukar</button>
+            <p>{nama}</p>
 
             <BlogList blooging={blogs} title="All Blogs" handleDelete={handleDelete} />
             <BlogList blooging={blogs.filter( (blog) => blog.author == 'mario') } title="Mario Blogs"/>
