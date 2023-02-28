@@ -1,5 +1,5 @@
 // eslint-disable-next-line
-import { useState , useEffect} from "react"; 
+import {useState} from "react"; 
 import BlogList from "./BlogList";
 import useFetch from "./useFetch";
 

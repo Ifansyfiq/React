@@ -7,8 +7,10 @@ const useFetch = (url) => {
 
     
     useEffect(() => { 
+        const abortCont = new AbortController(); //declarations object AbortController
+
         setTimeout (() => { //test time out utk 1 sec (don't use this for real project)
-            fetch(url)
+            fetch(url, {signal: abortCont.signal})
             .then(res => {
                 console.log(res)
                 if (!res.ok){ //test if have error on fetching or not (block response is false)
@@ -22,10 +24,18 @@ const useFetch = (url) => {
                 setError(null)
             })
             .catch((err) => {
-                setIsPending(false)
-                setError(err.message)
+                if (err.name === 'AbortError'){
+                    console.log('fetch Aborted')
+                }
+                else{
+                    setIsPending(false)
+                    setError(err.message)
+                }
             })
         },1000)
+
+        return () => abortCont.abort() //abort fetching data
+
     }, [url])
 
     return {data, isPending, error};    
