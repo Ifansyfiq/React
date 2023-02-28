@@ -1,5 +1,5 @@
 // eslint-disable-next-line
-import {useState} from "react"; 
+//import {useState} from "react"; 
 import BlogList from "./BlogList";
 import useFetch from "./useFetch";
 
@@ -74,7 +74,7 @@ const Home = () => {
              
             {error && <div>{error}</div>} 
             {isPending && <div>Please Wait........</div>}
-            {blogs && <BlogList blooging={blogs} title="All Blogs"   />} 
+            {blogs && <BlogList blooging={blogs} title="All Blogs"  />} 
             {/* {handleDelete={handleDelete}} */}
            {/* {blogs && <BlogList blooging={blogs.filter( (blog) => blog.author == 'mario') } title="Mario Blogs"/>}  */}
            {/* eslint eqeqeq: 0 */}
@@ -82,4 +82,4 @@ const Home = () => {
     );
 }
  
-export default Home; 
+export default Home;    

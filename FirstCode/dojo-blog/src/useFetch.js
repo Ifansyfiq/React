@@ -12,15 +12,15 @@ const useFetch = (url) => {
         setTimeout (() => { //test time out utk 1 sec (don't use this for real project)
             fetch(url, {signal: abortCont.signal})
             .then(res => {
-                console.log(res)
+                //console.log(res)
                 if (!res.ok){ //test if have error on fetching or not (block response is false)
                     throw Error('Could not fetch from resource')  
                 }
                 return res.json()
             })
             .then(data => {
-                setData(data)
                 setIsPending(false)
+                setData(data)
                 setError(null)
             })
             .catch((err) => {
