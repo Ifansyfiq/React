@@ -6,27 +6,27 @@ import useFetch from "./useFetch";
 const Home = () => {
     
     //const name = 'hayai';
-    const [name, setName] = useState('hayai');
-    const [age, setAge] = useState(23);
+    // const [name, setName] = useState('hayai');
+    // const [age, setAge] = useState(23);
     // const [blogs, setBlogs] = useState(null);
     // const [isPending, setIsPending] = useState(true); //loading
     // const [error , setError] = useState(null);  //error fetching
 
     const {data: blogs, isPending, error} = useFetch('http://localhost:8000/blogs'); //for custom hook useFetch()
 
-    const [nama, setNama] = useState('jamal');  //useEffect 
+    // const [nama, setNama] = useState('jamal');  //useEffect 
 
     // const handleDelete = (id) => {
     //     const newBlogs = blogs.filter((blog) => blog.id !== id); /* eslint eqeqeq: 0 */
     //     setBlogs(newBlogs);
     // } 
-    const handleClick = () => {
-        setName('saki');
-        setAge(39);
-    }
-    const handleClick2 = (name) => {
-        console.log('hello ' +name);
-    }
+    // const handleClick = () => {
+    //     setName('saki');
+    //     setAge(39);
+    // }
+    // const handleClick2 = (name) => {
+    //     console.log('hello ' +name);
+    // }
 
     //useEffect
     // useEffect(() => { 
@@ -64,20 +64,19 @@ const Home = () => {
 
     return (  
         <nav className="home">
-            
             <h1>HomePage</h1>
-            <p>{name} is {age} years old</p>
+            {/* <p>{name} is {age} years old</p>
             <button onClick={handleClick}>Click Me</button>
-            <button onClick={() => handleClick2('hayai')}>Click Meeeeeeeee</button>
+            <button onClick={() => handleClick2('hayai')}>Click Meeeeeeeee</button> */}
 
-            <button onClick={() => setNama('kamarul')}>Tukar</button>
-            <p>{nama}</p>
-            
-            {error && <div>{error}</div>}
+            {/* <button onClick={() => setNama('kamarul')}>Tukar</button> */}
+            {/* <p>{nama}</p> */}
+             
+            {error && <div>{error}</div>} 
             {isPending && <div>Please Wait........</div>}
             {blogs && <BlogList blooging={blogs} title="All Blogs"   />} 
             {/* {handleDelete={handleDelete}} */}
-           {blogs && <BlogList blooging={blogs.filter( (blog) => blog.author == 'mario') } title="Mario Blogs"/>} 
+           {/* {blogs && <BlogList blooging={blogs.filter( (blog) => blog.author == 'mario') } title="Mario Blogs"/>}  */}
            {/* eslint eqeqeq: 0 */}
         </nav>
     );
