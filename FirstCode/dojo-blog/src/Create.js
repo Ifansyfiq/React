@@ -1,10 +1,12 @@
 import { useState } from "react";
-
+import { useNavigate } from "react-router-dom" //declare navigate (for v5 use useHistory) to go next/previous page
+ 
 const Create = () => {
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
     const [author, setAuthor] = useState('');
     const [isPending, setIsPending] = useState(false); // utk loading submit
+    const navigate = useNavigate();
 
     const handleSubmit = (event) => {
         event.preventDefault(); // prevent web from refresh
@@ -19,7 +21,9 @@ const Create = () => {
         }).then(()=>{
             console.log('blog added')
             setIsPending(false)
-        })
+            //useNavigate.go(-1)
+            navigate('/') //navigate to home after submit the form
+        })  
     }
 
     return ( 
