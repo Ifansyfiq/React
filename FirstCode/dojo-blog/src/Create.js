@@ -4,7 +4,7 @@ const Create = () => {
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
     const [author, setAuthor] = useState('');
-    const [isPending, setIsPending] = useState(false);
+    const [isPending, setIsPending] = useState(false); // utk loading submit
 
     const handleSubmit = (event) => {
         event.preventDefault(); // prevent web from refresh
