@@ -1,15 +1,21 @@
 import { useState } from "react";
 
 const Create = () => {
-    const [Title, setTitle] = useState('');
-    const [Body, setBody] = useState('');
-    const [Author, setAuthor] = useState('');
+    const [title, setTitle] = useState('');
+    const [body, setBody] = useState('');
+    const [author, setAuthor] = useState('');
 
     const handleSubmit = (event) => {
         event.preventDefault(); // prevent web from refresh
-        const blog = {Title, Body, Author}
+        const blog = {title, body, author}
         
-        console.log(blog);
+        fetch('http://localhost:8000/blogs' , {
+            method: 'POST',
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(blog)
+        }).then(()=>{
+            console.log('blog added')
+        })
     }
 
     return ( 
@@ -18,11 +24,11 @@ const Create = () => {
             <h1>Add New blog</h1>
             <form onSubmit={handleSubmit}>
                 <label>Blog Title:</label>
-                <input type={Text} required value={Title} onChange = {(e) => setTitle(e.target.value)} ></input>
+                <input type={Text} required value={title} onChange = {(e) => setTitle(e.target.value)} ></input>
                 <label>Blog Body:</label>
-                <textarea required value={Body} onChange = {(e) => setBody(e.target.value)}></textarea>
+                <textarea required value={body} onChange = {(e) => setBody(e.target.value)}></textarea>
                 <label>Blog Author:</label>
-                <select value={Author} onChange = {(e) => setAuthor(e.target.value)}>
+                <select value={author} onChange = {(e) => setAuthor(e.target.value)}>
                     <option value="mario">mario</option>
                     <option value="yoshi">yoshi</option>
                 </select>
