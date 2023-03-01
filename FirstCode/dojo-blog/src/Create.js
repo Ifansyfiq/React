@@ -5,11 +5,18 @@ const Create = () => {
     const [Body, setBody] = useState('');
     const [Author, setAuthor] = useState('');
 
+    const handleSubmit = (event) => {
+        event.preventDefault(); // prevent web from refresh
+        const blog = {Title, Body, Author}
+        
+        console.log(blog);
+    }
+
     return ( 
 
         <div className="create">
             <h1>Add New blog</h1>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <label>Blog Title:</label>
                 <input type={Text} required value={Title} onChange = {(e) => setTitle(e.target.value)} ></input>
                 <label>Blog Body:</label>
