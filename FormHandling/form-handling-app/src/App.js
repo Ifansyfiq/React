@@ -1,8 +1,9 @@
 import FormInput from './components/FormInput';
+import "./app.css";
 
-function App() {
+const App =  () =>   {
   return (
-    <div className="App">
+  <div className="apps">
       <form>
         <FormInput placeholder="Username"/>
         <FormInput placeholder="Email"/>
